@@ -12,7 +12,7 @@ layers:
   - U
   - {t: '-', s: _}
   - $$mdi:backspace-reverse-outline$$
-  - {t: '$$mdi:backspace$$', type: backspace}
+  - INT2
   - $$mdi:keyboard-tab$$
   - A
   - N
@@ -24,8 +24,8 @@ layers:
   - E
   - O
   - I
+  - {t: ',', s: <}
   - $$mdi:apple-keyboard-control$$
-  - $$mdi:apple-keyboard-shift$$
   - F2
   - Z
   - Y
@@ -42,8 +42,8 @@ layers:
   - {t: '$$mdi:keyboard-esc$$', h: SNIPE}
   - {t: '$$mdi:keyboard-space$$', h: MOUSE}
   - {t: '$$mdi:keyboard-tab$$', h: SCROLL}
-  - {t: '$$mdi:keyboard-return$$', type: enter}
-  - {t: '$$mdi:backspace$$', h: SYM}
+  - {t: '$$mdi:keyboard-return$$', h: SYM}
+  - {t: '$$mdi:backspace$$', h: NUM}
   - $$mdi:mouse-left-click-outline$$
   NUM:
   - $$mdi:keyboard-esc$$
@@ -88,7 +88,7 @@ layers:
   - INT2
   - {t: '`', s: '~'}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - {type: held}
   - {t: '$$mdi:transfer$$', type: trans}
   SYM:
   - {t: '$$mdi:minus-circle-outline$$', type: none}
@@ -132,8 +132,8 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
   - {type: held}
+  - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   FUN:
   - {t: '$$mdi:minus-circle-outline$$', type: none}
