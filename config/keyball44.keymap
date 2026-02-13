@@ -13,22 +13,10 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
-/* ===== Global tuning =====
- * 目的：DEFAULT層の hold-tap / layer-tap が「長押しでタップ連打」にならず、
- *       きちんとホールド側へ寄るようにする。
- *
- * 変更点：
- * - flavor: hold-preferred（ホールド優先）
- * - quick-tap-ms: -1（クイックタップ優先を無効化）
- * - require-prior-idle-ms: 120（ロール誤判定軽減）
- * - hold-while-undecided（判定確定前でもホールドを先に有効化）
- */
 &lt {
-    tapping-term-ms = <260>;
-    flavor = "hold-preferred";
-    quick-tap-ms = <-1>;
-    require-prior-idle-ms = <120>;
-    hold-while-undecided;
+    tapping-term-ms = <240>;
+    flavor = "balanced";
+    quick-tap-ms = <150>;
 };
 
 &mt {
@@ -54,6 +42,7 @@
             label = "COMMA_QUESTION";
             #binding-cells = <0>;
             bindings = <&kp COMMA>, <&kp QUESTION>;
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -62,6 +51,7 @@
             label = "DOT_SEMI";
             #binding-cells = <0>;
             bindings = <&kp DOT>, <&kp SEMI>;
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -70,13 +60,8 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HT_KP";
             #binding-cells = <2>;
-
-            flavor = "hold-preferred";
-            tapping-term-ms = <230>;
-            quick-tap-ms = <-1>;
-            require-prior-idle-ms = <120>;
-            hold-while-undecided;
-
+            flavor = "balanced";
+            tapping-term-ms = <280>;
             bindings = <&kp>, <&kp>;
         };
 
@@ -85,13 +70,8 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HT_MKP";
             #binding-cells = <2>;
-
-            flavor = "hold-preferred";
-            tapping-term-ms = <230>;
-            quick-tap-ms = <-1>;
-            require-prior-idle-ms = <120>;
-            hold-while-undecided;
-
+            flavor = "balanced";
+            tapping-term-ms = <280>;
             bindings = <&mkp>, <&kp>;
         };
 
@@ -119,15 +99,6 @@
         };
     };
 
-    /* Conditional Layers to activate FUN layer when NUM (Layer 1) and SYM (Layer 2) are both active */
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        tri_layer {
-            if-layers = <1 2>;
-            then-layer = <3>;
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
@@ -135,25 +106,47 @@
         default_layer {
             label = "QWRT";
             bindings = <
-&kp LALT             &ht F2 Q              &ht F4 L              &ht N7 H            &ht N8 C             &ht N9 F                          &ht EQUAL P        &ht PLUS B         &ht MINUS U        &ht FSLH MINUS      &kp ASTRK      &mkp LCLK
-&kp TAB              &kp A                 &kp N                 &ht N4 R            &ht N5 S             &ht N6 W                          &ht LC(C) G        &ht LC(V) T        &kp E             &kp O              &kp I          &kp COMMA
-&kp LCTRL            &kp LEFT_SHIFT        &ht F8 Z              &ht N1 Y            &ht N2 M             &ht N3 V                          &ht LC(Z) J        &ht LC(Y) K        &ht LC(A) D        &ht LA(F4) BSPC     &kp X          &kp DOT
-&ht LGUI LG(LS(S))   &ht LALT N0           &mkp LCLK             &mkp RCLK           &lt 1 SPACE                            &lt 2 ENTER          &ht DEL BSPC                                                             &kp GRAVE
+&kp LALT            &ht F2 Q            &ht F4 L             &ht N7 H         &ht N8 C           &ht N9 F                        &ht EQUAL P      &ht PLUS B       &ht MINUS U     &ht FSLH MINUS    &kp ASTRK    &mkp LCLK
+&kp TAB             &kp A               &kp N                 &ht N4 R         &ht N5 S           &ht N6 W                        &ht LC(C) G      &ht LC(V) T      &kp E           &kp O             &kp I        &kp COMMA
+&kp LCTRL           &kp LEFT_SHIFT      &ht F8 Z              &ht N1 Y         &ht N2 M           &ht N3 V                        &ht LC(Z) J      &ht LC(Y) K      &ht LC(A) D     &ht LA(F4) BSPC   &kp X        &kp DOT
+&ht LG(LS(S)) LGUI &ht N0 LALT         &ht_mkp LCLK ESC     &ht_mkp RCLK LSHFT  &lt 1 SPACE                      &lt 2 ENTER    &ht DEL BSPC                                                                      &none
             >;
         };
 
-        /* ===== LAYER 1: NUMBER ===== */
+        /*
+         * ===== LAYER 1: NUMBER (変更) =====
+         *
+         * 左手:
+         * ┌──────┬──────┬──────┬──────┬──────┬──────────┐
+         * │ ESC  │      │      │  7   │  8   │ 9/マクロ │
+         * ├──────┼──────┼──────┼──────┼──────┼──────────┤
+         * │  W   │ F4   │      │  4   │  5   │    6     │
+         * ├──────┼──────┼──────┼──────┼──────┼──────────┤
+         * │ CTRL │ ALT  │      │  1   │  2   │    3     │
+         * └──────┴──────┼──────┼──────┼──────┼──────────┘
+         *        │      │  0   │ 変換 │ひらカタ│半角全角 │
+         *
+         * 右手:
+         * ┌──────┬──────┬──────┬──────┬──────┬──────┐
+         * │ F2   │  ↑   │ F12  │  =   │  /   │  .   │
+         * ├──────┼──────┼──────┼──────┼──────┼──────┤
+         * │  ←   │      │  →   │      │      │      │
+         * ├──────┼──────┼──────┼──────┼──────┼──────┤
+         * │      │  ↓   │      │      │      │      │
+         * └──────┴──────┼──────┼──────┤      └──────┘
+         *               │      │      │
+         */
         number_layer {
             label = "NUM";
             bindings = <
-&kp ESC    &none      &none      &kp N7    &kp N8     &td_9_dins10236                  &kp F2     &kp UP    &kp F12    &kp EQUAL  &kp FSLH   &kp DOT
+&kp ESC    &none      &none      &kp N7    &kp N8     &td_9_dins                  &kp F2     &kp UP    &kp F12    &kp EQUAL  &kp FSLH   &kp DOT
 &kp W      &kp F4     &none      &kp N4    &kp N5     &kp N6                      &kp LEFT   &none     &kp RIGHT  &none      &none      &none
 &kp LCTRL  &kp LALT   &none      &kp N1    &kp N2     &kp N3                      &none      &kp DOWN  &none      &none      &none      &none
 &none      &kp N0     &kp INT4   &kp INT2  &kp GRAVE                   &trans     &trans                                                &trans
             >;
         };
 
-        /* ===== LAYER 2: SYMBOL ===== */
+        /* ===== LAYER 2: SYMBOL (変更なし) ===== */
         symbol_layer {
             label = "SYM";
             bindings = <
@@ -164,18 +157,21 @@
             >;
         };
 
-        /* ===== LAYER 3: FUNCTION ===== */
+        /* ===== LAYER 3: FUNCTION (変更なし) ===== */
         function_layer {
             label = "FUN";
             bindings = <
 &none   &kp F1  &kp F2   &kp F3   &kp F4   &none              &none  &none  &none  &none  &none  &none
 &none   &kp F5  &kp F6   &kp F7   &kp F8   &none              &none  &none  &none  &none  &none  &none
 &none   &kp F9  &kp F10  &kp F11  &kp F12  &none              &none  &none  &none  &none  &none  &none
-&trans  &trans  &trans   &trans   &trans              &trans  &trans                               &trans
+&trans  &trans  &trans   &trans   &trans              &trans  &mo 3                              &trans
             >;
         };
 
-        /* ===== LAYER 4: MOUSE ===== */
+        /*
+         * ===== LAYER 4: MOUSE (変更: 全キーを&transに) =====
+         * トラックボール接触によるレイヤー切替を無効化
+         */
         mouse_layer {
             label = "MOUSE";
             bindings = <
@@ -186,7 +182,7 @@
             >;
         };
 
-        /* ===== LAYER 5: SCROLL ===== */
+        /* ===== LAYER 5: SCROLL (変更なし) ===== */
         scroll_layer {
             label = "SCROLL";
             bindings = <
@@ -197,7 +193,7 @@
             >;
         };
 
-        /* ===== LAYER 6: SNIPE ===== */
+        /* ===== LAYER 6: SNIPE (変更なし) ===== */
         snipe_layer {
             label = "SNIPE";
             bindings = <
