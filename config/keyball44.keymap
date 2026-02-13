@@ -76,20 +76,20 @@
         default_layer {
             label = "QWRT";
             bindings = <
-&kp LALT   &kp Q           &kp L         &kp H        &kp C      &kp F                   &kp P            &kp B  &kp U  &kp MINUS  &mkp LCLK  &mkp RCLK
-&kp TAB    &kp A           &kp N         &kp R        &kp S      &kp W                   &kp G            &kp T  &kp E  &kp O      &kp I      &kp COMMA
-&kp LCTRL  &kp LEFT_SHIFT  &kp Z         &kp Y        &kp M      &kp V                   &kp J            &kp K  &kp D  &kp DOT    &kp X      &kp BACKSPACE
-&mo 4      &kp LALT        &lt 6 ESCAPE  &lt 4 SPACE  &lt 5 TAB             &lt 2 ENTER  &lt 1 BACKSPACE                                      &kp GRAVE
+&kp LALT   &kp Q           &kp L         &kp H         &kp C            &kp F                   &kp P            &kp B  &kp U  &kp MINUS      &mkp LCLK  &mkp RCLK
+&kp TAB    &kp A           &kp N         &kp R         &kp S            &kp W                   &kp G            &kp T  &kp E  &kp O          &kp I      &kp COMMA
+&kp LCTRL  &kp LEFT_SHIFT  &kp Z         &kp Y         &kp M            &kp V                   &kp J            &kp K  &kp D  &kp BACKSPACE  &kp X      &kp DOT
+&mo 4      &kp LALT        &lt 3 ESCAPE  &lt 1 DELETE  &lt 1 LS(ENTER)             &lt 2 ENTER  &lt 1 BACKSPACE                                          &kp GRAVE
             >;
         };
 
         number_layer {
             label = "NUM";
             bindings = <
-&kp ESC    &none     &kp N7    &kp N8    &kp N9     &type_dins              &kp F2    &kp UP    &none      &kp EQUAL  &kp SLASH  &kp DOT
-&kp W      &kp F4    &kp N4    &kp N5    &kp N6     &none                   &kp LEFT  &none     &kp RIGHT  &none      &none      &none
-&kp LCTRL  &kp LALT  &kp N1    &kp N2    &kp N3     &none                   &none     &kp DOWN  &none      &none      &none      &none
-&kp N0     &none     &kp INT4  &kp INT2  &kp GRAVE                  &trans  &trans                                               &trans
+&kp ESC    &none     &kp N7    &kp N8    &kp N9     &none                  &kp F2     &kp UP    &none      &kp EQUAL  &kp SLASH  &kp DOT
+&kp W      &kp F4    &kp N4    &kp N5    &kp N6     &kp PLUS               &kp LEFT   &none     &kp RIGHT  &none      &none      &none
+&kp LCTRL  &kp LALT  &kp N1    &kp N2    &kp N3     &kp SLASH              &kp EQUAL  &kp DOWN  &none      &none      &none      &none
+&kp N0     &kp DOT   &kp INT4  &kp INT2  &kp GRAVE                 &trans  &trans                                                &trans
             >;
         };
 
