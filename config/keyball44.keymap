@@ -13,10 +13,22 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
+/* ===== Global tuning =====
+ * 目的：DEFAULT層の hold-tap / layer-tap が「長押しでタップ連打」にならず、
+ *       きちんとホールド側へ寄るようにする。
+ *
+ * 変更点：
+ * - flavor: hold-preferred（ホールド優先）
+ * - quick-tap-ms: -1（クイックタップ優先を無効化）
+ * - require-prior-idle-ms: 120（ロール誤判定軽減）
+ * - hold-while-undecided（判定確定前でもホールドを先に有効化）
+ */
 &lt {
-    tapping-term-ms = <240>;
-    flavor = "balanced";
-    quick-tap-ms = <150>;
+    tapping-term-ms = <260>;
+    flavor = "hold-preferred";
+    quick-tap-ms = <-1>;
+    require-prior-idle-ms = <120>;
+    hold-while-undecided;
 };
 
 &mt {
@@ -42,7 +54,6 @@
             label = "COMMA_QUESTION";
             #binding-cells = <0>;
             bindings = <&kp COMMA>, <&kp QUESTION>;
-
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -51,7 +62,6 @@
             label = "DOT_SEMI";
             #binding-cells = <0>;
             bindings = <&kp DOT>, <&kp SEMI>;
-
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -60,9 +70,13 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HT_KP";
             #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <150>;
+
+            flavor = "hold-preferred";
+            tapping-term-ms = <230>;
+            quick-tap-ms = <-1>;
+            require-prior-idle-ms = <120>;
+            hold-while-undecided;
+
             bindings = <&kp>, <&kp>;
         };
 
@@ -71,9 +85,13 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HT_MKP";
             #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <150>;
+
+            flavor = "hold-preferred";
+            tapping-term-ms = <230>;
+            quick-tap-ms = <-1>;
+            require-prior-idle-ms = <120>;
+            hold-while-undecided;
+
             bindings = <&mkp>, <&kp>;
         };
 
@@ -108,36 +126,15 @@
         default_layer {
             label = "QWRT";
             bindings = <
-&kp LALT            &ht F2 Q            &ht F4 L             &ht N7 H         &ht N8 C           &ht N9 F                        &ht EQUAL P      &ht PLUS B       &ht MINUS U     &ht FSLH MINUS    &kp ASTRK    &mkp LCLK
-&kp TAB             &kp A               &kp N                 &ht N4 R         &ht N5 S           &ht N6 W                        &ht LC(C) G      &ht LC(V) T      &kp E           &kp O             &kp I        &kp COMMA
-&kp LCTRL           &kp LEFT_SHIFT      &ht F8 Z              &ht N1 Y         &ht N2 M           &ht N3 V                        &ht LC(Z) J      &ht LC(Y) K      &ht LC(A) D     &ht LA(F4) BSPC   &kp X        &kp DOT
-&ht LG(LS(S)) LGUI &ht N0 LALT         &ht_mkp LCLK ESC     &ht_mkp RCLK LSHFT  &lt 1 SPACE                      &lt 2 ENTER    &ht DEL BSPC                                                                      &none
+&kp LALT             &ht F2 Q              &ht F4 L              &ht N7 H            &ht N8 C             &ht N9 F                          &ht EQUAL P        &ht PLUS B         &ht MINUS U        &ht FSLH MINUS      &kp ASTRK      &mkp LCLK
+&kp TAB              &kp A                 &kp N                 &ht N4 R            &ht N5 S             &ht N6 W                          &ht LC(C) G        &ht LC(V) T        &kp E             &kp O              &kp I          &kp COMMA
+&kp LCTRL            &kp LEFT_SHIFT        &ht F8 Z              &ht N1 Y            &ht N2 M             &ht N3 V                          &ht LC(Z) J        &ht LC(Y) K        &ht LC(A) D        &ht LA(F4) BSPC     &kp X          &kp DOT
+&ht LG(LS(S)) LGUI   &ht N0 LALT           &ht_mkp LCLK ESC      &ht_mkp RCLK LSHFT  &lt 1 SPACE                            &lt 2 ENTER          &ht DEL BSPC                                                             &kp GRAVE
+
             >;
         };
 
-        /*
-         * ===== LAYER 1: NUMBER (変更) =====
-         *
-         * 左手:
-         * ┌──────┬──────┬──────┬──────┬──────┬──────────┐
-         * │ ESC  │      │      │  7   │  8   │ 9/マクロ │
-         * ├──────┼──────┼──────┼──────┼──────┼──────────┤
-         * │  W   │ F4   │      │  4   │  5   │    6     │
-         * ├──────┼──────┼──────┼──────┼──────┼──────────┤
-         * │ CTRL │ ALT  │      │  1   │  2   │    3     │
-         * └──────┴──────┼──────┼──────┼──────┼──────────┘
-         *        │      │  0   │ 変換 │ひらカタ│半角全角 │
-         *
-         * 右手:
-         * ┌──────┬──────┬──────┬──────┬──────┬──────┐
-         * │ F2   │  ↑   │ F12  │  =   │  /   │  .   │
-         * ├──────┼──────┼──────┼──────┼──────┼──────┤
-         * │  ←   │      │  →   │      │      │      │
-         * ├──────┼──────┼──────┼──────┼──────┼──────┤
-         * │      │  ↓   │      │      │      │      │
-         * └──────┴──────┼──────┼──────┤      └──────┘
-         *               │      │      │
-         */
+        /* ===== LAYER 1: NUMBER ===== */
         number_layer {
             label = "NUM";
             bindings = <
@@ -148,7 +145,7 @@
             >;
         };
 
-        /* ===== LAYER 2: SYMBOL (変更なし) ===== */
+        /* ===== LAYER 2: SYMBOL ===== */
         symbol_layer {
             label = "SYM";
             bindings = <
@@ -159,7 +156,7 @@
             >;
         };
 
-        /* ===== LAYER 3: FUNCTION (変更なし) ===== */
+        /* ===== LAYER 3: FUNCTION ===== */
         function_layer {
             label = "FUN";
             bindings = <
@@ -170,10 +167,7 @@
             >;
         };
 
-        /*
-         * ===== LAYER 4: MOUSE (変更: 全キーを&transに) =====
-         * トラックボール接触によるレイヤー切替を無効化
-         */
+        /* ===== LAYER 4: MOUSE ===== */
         mouse_layer {
             label = "MOUSE";
             bindings = <
@@ -184,7 +178,7 @@
             >;
         };
 
-        /* ===== LAYER 5: SCROLL (変更なし) ===== */
+        /* ===== LAYER 5: SCROLL ===== */
         scroll_layer {
             label = "SCROLL";
             bindings = <
@@ -195,7 +189,7 @@
             >;
         };
 
-        /* ===== LAYER 6: SNIPE (変更なし) ===== */
+        /* ===== LAYER 6: SNIPE ===== */
         snipe_layer {
             label = "SNIPE";
             bindings = <
