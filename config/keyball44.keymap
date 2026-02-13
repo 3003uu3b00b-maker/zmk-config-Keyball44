@@ -119,6 +119,15 @@
         };
     };
 
+    /* Conditional Layers to activate FUN layer when NUM (Layer 1) and SYM (Layer 2) are both active */
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <1 2>;
+            then-layer = <3>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -129,8 +138,7 @@
 &kp LALT             &ht F2 Q              &ht F4 L              &ht N7 H            &ht N8 C             &ht N9 F                          &ht EQUAL P        &ht PLUS B         &ht MINUS U        &ht FSLH MINUS      &kp ASTRK      &mkp LCLK
 &kp TAB              &kp A                 &kp N                 &ht N4 R            &ht N5 S             &ht N6 W                          &ht LC(C) G        &ht LC(V) T        &kp E             &kp O              &kp I          &kp COMMA
 &kp LCTRL            &kp LEFT_SHIFT        &ht F8 Z              &ht N1 Y            &ht N2 M             &ht N3 V                          &ht LC(Z) J        &ht LC(Y) K        &ht LC(A) D        &ht LA(F4) BSPC     &kp X          &kp DOT
-&ht LG(LS(S)) LGUI   &ht N0 LALT           &ht_mkp LCLK ESC      &ht_mkp RCLK LSHFT  &lt 1 SPACE                            &lt 2 ENTER          &ht DEL BSPC                                                             &kp GRAVE
-
+&ht LGUI LG(LS(S))   &ht LALT N0           &mkp LCLK             &mkp RCLK           &lt 1 SPACE                            &lt 2 ENTER          &ht DEL BSPC                                                             &kp GRAVE
             >;
         };
 
@@ -138,7 +146,7 @@
         number_layer {
             label = "NUM";
             bindings = <
-&kp ESC    &none      &none      &kp N7    &kp N8     &td_9_dins                  &kp F2     &kp UP    &kp F12    &kp EQUAL  &kp FSLH   &kp DOT
+&kp ESC    &none      &none      &kp N7    &kp N8     &td_9_dins10236                  &kp F2     &kp UP    &kp F12    &kp EQUAL  &kp FSLH   &kp DOT
 &kp W      &kp F4     &none      &kp N4    &kp N5     &kp N6                      &kp LEFT   &none     &kp RIGHT  &none      &none      &none
 &kp LCTRL  &kp LALT   &none      &kp N1    &kp N2     &kp N3                      &none      &kp DOWN  &none      &none      &none      &none
 &none      &kp N0     &kp INT4   &kp INT2  &kp GRAVE                   &trans     &trans                                                &trans
@@ -163,7 +171,7 @@
 &none   &kp F1  &kp F2   &kp F3   &kp F4   &none              &none  &none  &none  &none  &none  &none
 &none   &kp F5  &kp F6   &kp F7   &kp F8   &none              &none  &none  &none  &none  &none  &none
 &none   &kp F9  &kp F10  &kp F11  &kp F12  &none              &none  &none  &none  &none  &none  &none
-&trans  &trans  &trans   &trans   &trans              &trans  &mo 3                              &trans
+&trans  &trans  &trans   &trans   &trans              &trans  &trans                               &trans
             >;
         };
 
