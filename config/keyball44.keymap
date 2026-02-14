@@ -56,7 +56,6 @@
         };
 
         /* キー/キー ホールドタップ (長押し=第1引数, タップ=第2引数) */
-
         ht: hold_tap_kp {
             compatible = "zmk,behavior-hold-tap";
             label = "HT_KP";
@@ -67,7 +66,6 @@
         };
 
         /* マウスクリック/キー ホールドタップ (長押し=マウスボタン, タップ=キー) */
-
         ht_mkp: hold_tap_mkp {
             compatible = "zmk,behavior-hold-tap";
             label = "HT_MKP";
@@ -78,7 +76,6 @@
         };
 
         /* 9/マクロ タップダンス (1回=9, 2回=Dins10236マクロ) */
-
         td_9_dins: tap_dance_9_dins {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_9_DINS";
@@ -106,14 +103,13 @@
         compatible = "zmk,keymap";
 
         /* ===== LAYER 0: DEFAULT ===== */
-
         default_layer {
             label = "QWRT";
             bindings = <
-&kp LALT            &ht F2 Q        &ht F4 L          &ht N7 H            &ht N8 C     &ht N9 F                   &ht EQUAL P   &ht PLUS B   &ht MINUS U  &ht FSLH MINUS   &kp ASTRK  &mkp LCLK
-&kp TAB             &kp A           &kp N             &ht N4 R            &ht N5 S     &ht N6 W                   &ht LC(C) G   &ht LC(V) T  &kp E        &kp O            &kp I      &kp COMMA
-&kp LCTRL           &kp LEFT_SHIFT  &ht F8 Z          &ht N1 Y            &ht N2 M     &ht N3 V                   &ht LC(Z) J   &ht LC(Y) K  &ht LC(A) D  &ht LA(F4) BSPC  &kp X      &kp DOT
-&ht LG(LS(S)) LGUI  &ht N0 LALT     &ht_mkp LCLK ESC  &ht_mkp RCLK LSHFT  &lt 1 SPACE                &lt 2 ENTER  &ht DEL BSPC                                                        &kp GRAVE
+&kp LALT            &ht F2 Q            &ht F4 L             &ht N7 H         &ht N8 C           &ht N9 F                        &ht LS(MINUS) P  &ht LS(SEMI) B       &ht MINUS U     &ht FSLH MINUS    &kp LS(SQT)    &mkp LCLK
+&kp TAB             &ht LA(TAB) A       &ht LC(TAB) N                 &ht N4 R         &ht N5 S           &ht N6 W                        &ht LC(C) G      &ht LC(V) T      &ht UP E        &ht DOWN O        &ht LEFT I   &ht RIGHT COMMA
+&kp LCTRL           &kp LEFT_SHIFT      &ht F8 Z              &ht N1 Y         &ht N2 M           &ht N3 V                        &ht LC(Z) J      &ht LC(Y) K      &ht LC(A) D     &ht LA(F4) BSPC   &kp X        &ht LS(FSLH) DOT
+&ht LG(LS(S)) LGUI &ht N0 LALT         &ht_mkp LCLK ESC     &ht_mkp RCLK LSHFT  &lt 1 SPACE                      &lt 2 ENTER    &ht DEL BSPC                                                                      &none
             >;
         };
 
@@ -140,19 +136,17 @@
          * └──────┴──────┼──────┼──────┤      └──────┘
          *               │      │      │
          */
-
         number_layer {
             label = "NUM";
             bindings = <
-&kp ESC    &none     &none     &kp N7    &kp N8     &td_9_dins              &kp F2    &kp UP    &kp F12    &kp EQUAL  &kp FSLH  &kp DOT
-&kp W      &kp F4    &none     &kp N4    &kp N5     &kp N6                  &kp LEFT  &none     &kp RIGHT  &none      &none     &none
-&kp LCTRL  &kp LALT  &none     &kp N1    &kp N2     &kp N3                  &none     &kp DOWN  &none      &none      &none     &none
-&none      &kp N0    &kp INT4  &kp INT2  &kp GRAVE                  &trans  &trans                                              &trans
+&kp ESC    &none      &none      &kp N7    &kp N8     &td_9_dins                  &kp F2     &kp UP    &kp F12    &kp EQUAL  &kp FSLH   &kp DOT
+&kp W      &kp F4     &none      &kp N4    &kp N5     &kp N6                      &kp LEFT   &none     &kp RIGHT  &none      &none      &none
+&kp LCTRL  &kp LALT   &none      &kp N1    &kp N2     &kp N3                      &none      &kp DOWN  &none      &none      &none      &none
+&none      &kp N0     &kp INT4   &kp INT2  &kp GRAVE                   &trans     &trans                                                &trans
             >;
         };
 
         /* ===== LAYER 2: SYMBOL (変更なし) ===== */
-
         symbol_layer {
             label = "SYM";
             bindings = <
@@ -164,7 +158,6 @@
         };
 
         /* ===== LAYER 3: FUNCTION (変更なし) ===== */
-
         function_layer {
             label = "FUN";
             bindings = <
@@ -179,7 +172,6 @@
          * ===== LAYER 4: MOUSE (変更: 全キーを&transに) =====
          * トラックボール接触によるレイヤー切替を無効化
          */
-
         mouse_layer {
             label = "MOUSE";
             bindings = <
@@ -191,7 +183,6 @@
         };
 
         /* ===== LAYER 5: SCROLL (変更なし) ===== */
-
         scroll_layer {
             label = "SCROLL";
             bindings = <
@@ -203,7 +194,6 @@
         };
 
         /* ===== LAYER 6: SNIPE (変更なし) ===== */
-
         snipe_layer {
             label = "SNIPE";
             bindings = <
