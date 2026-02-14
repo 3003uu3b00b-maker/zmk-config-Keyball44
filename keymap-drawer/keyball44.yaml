@@ -7,24 +7,24 @@ layers:
   - {t: H, h: '7'}
   - {t: C, h: '8'}
   - {t: F, h: '9'}
-  - {t: P, h: '='}
-  - {t: B, h: +}
+  - {t: P, h: Sft+-}
+  - {t: B, h: Sft+;}
   - {t: U, h: '-'}
   - {t: '-', h: /, s: _}
-  - '*'
+  - {t: Sft+', s: Sft+"}
   - $$mdi:mouse-left-click-outline$$
   - $$mdi:keyboard-tab$$
-  - A
-  - N
+  - {t: A, h: 'Alt+$$mdi:keyboard-tab$$'}
+  - {t: N, h: 'Ctl+$$mdi:keyboard-tab$$'}
   - {t: R, h: '4'}
   - {t: S, h: '5'}
   - {t: W, h: '6'}
   - {t: G, h: Ctl+C}
   - {t: T, h: Ctl+V}
-  - E
-  - O
-  - I
-  - {t: ',', s: <}
+  - {t: E, h: '$$mdi:arrow-up-bold$$'}
+  - {t: O, h: '$$mdi:arrow-down-bold$$'}
+  - {t: I, h: '$$mdi:arrow-left-bold$$'}
+  - {t: ',', h: '$$mdi:arrow-right-bold$$', s: <}
   - $$mdi:apple-keyboard-control$$
   - $$mdi:apple-keyboard-shift$$
   - {t: Z, h: F8}
@@ -36,7 +36,7 @@ layers:
   - {t: D, h: Ctl+A}
   - {t: '$$mdi:backspace$$', h: Alt+F4}
   - X
-  - {t: ., s: '>'}
+  - {t: ., h: Sft+/, s: '>'}
   - {t: LGUI, h: Gui+Sft+S}
   - {t: '$$mdi:apple-keyboard-option$$', h: '0'}
   - {t: '$$mdi:keyboard-esc$$', h: '$$mdi:mouse-left-click-outline$$'}
@@ -44,7 +44,7 @@ layers:
   - {t: '$$mdi:keyboard-space$$', h: NUM}
   - {t: '$$mdi:keyboard-return$$', h: SYM}
   - {t: '$$mdi:backspace$$', h: '$$mdi:backspace-reverse-outline$$'}
-  - {t: '`', s: '~'}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
   NUM:
   - $$mdi:keyboard-esc$$
   - {t: '$$mdi:minus-circle-outline$$', type: none}
