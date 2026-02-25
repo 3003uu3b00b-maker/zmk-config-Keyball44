@@ -14,8 +14,8 @@ layers:
   - {t: Sft+', s: Sft+"}
   - $$mdi:mouse-left-click-outline$$
   - $$mdi:keyboard-tab$$
-  - {t: A, h: 'Alt+$$mdi:keyboard-tab$$'}
-  - {t: N, h: 'Ctl+$$mdi:keyboard-tab$$'}
+  - A
+  - N
   - {t: R, h: '4'}
   - {t: S, h: '5'}
   - {t: W, h: '6'}
@@ -48,42 +48,42 @@ layers:
   NUM:
   - $$mdi:keyboard-esc$$
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '7', s: '&'}
-  - {t: '8', s: '*'}
+  - '&hn7'
+  - '&hn8'
+  - '&hn9'
   - '&type_dins'
   - F2
-  - $$mdi:arrow-up-bold$$
+  - F4
+  - F8
+  - F11
   - F12
-  - {t: '=', s: +}
-  - {t: /, s: '?'}
-  - {t: ., s: '>'}
+  - Alt+F11
   - W
   - F4
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '4', s: $}
-  - {t: '5', s: '%'}
-  - {t: '6', s: ^}
+  - '&hn4'
+  - '&hn5'
+  - '&hn6'
+  - HOME
+  - Ctl+C
+  - Ctl+C
+  - $$mdi:arrow-up-bold$$
+  - $$mdi:arrow-down-bold$$
   - $$mdi:arrow-left-bold$$
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
   - $$mdi:arrow-right-bold$$
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
   - $$mdi:apple-keyboard-control$$
   - $$mdi:apple-keyboard-option$$
+  - '&hn1'
+  - '&hn2'
+  - '&hn3'
+  - END
+  - Ctl+Z
+  - Ctl+Y
+  - Ctl+A
+  - Ctl+W
+  - PG DN
+  - PG UP
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '1', s: '!'}
-  - {t: '2', s: '@'}
-  - {t: '3', s: '#'}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - $$mdi:arrow-down-bold$$
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '0', s: )}
+  - '&hn0'
   - INT4
   - INT2
   - {t: '`', s: '~', type: held}
