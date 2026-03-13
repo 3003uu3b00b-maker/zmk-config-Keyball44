@@ -195,9 +195,9 @@
         default_layer {
             label = "QWRT";
             bindings = <
-&kp LALT            &ht F2 Q        &ht F4 L          &ht N7 H            &ht N8 C     &ht N9 F                   &ht LS(MINUS) P  &ht LS(SEMI) B  &ht MINUS U  &ht FSLH MINUS   &kp LS(SQT)  &tog NAGI
+&kp LALT            &ht F2 Q        &ht F4 L          &ht N7 H            &ht N8 C     &ht N9 F                   &ht LS(MINUS) P  &ht LS(SEMI) B  &ht MINUS U  &ht FSLH MINUS   &kp LS(SQT)  &mkp LCLK
 &kp TAB             &kp A            &kp N             &ht_slow N4 R       &ht_slow N5 S  &ht_slow N6 W                &ht_slow LC(C) G   &ht_slow LC(V) T  &ht_slow UP E  &ht_slow DOWN O    &ht_slow LEFT I  &ht_slow RIGHT COMMA
-&kp LCTRL           &kp LEFT_SHIFT  &ht F8 Z          &ht N1 Y            &ht N2 M     &ht N3 V                   &ht LC(Z) J      &ht LC(Y) K     &ht LC(A) D  &ht LA(F4) BSPC  &kp X        &ht LS(FSLH) DOT
+&kp LCTRL           &kp LEFT_SHIFT  &ht F8 Z          &ht N1 Y            &ht N2 M     &ht N3 V                   &ht LC(Z) J      &ht LC(Y) K     &ht LC(A) D  &ht_tog NAGI BSPC  &kp X        &ht LS(FSLH) DOT
 &ht LG(LS(S)) LGUI  &ht N0 LALT     &ht_mkp LCLK ESC  &ht_mkp RCLK LSHFT  &lt 1 SPACE                &lt 2 ENTER  &ht DEL BSPC                                                                &kp GRAVE
             >;
         };
@@ -315,9 +315,9 @@
             label = "NAGI";
             bindings = <
 &none      &ng Q      &ng W      &ng E      &ng R      &ng T                    &ng Y      &ng U      &ng I        &ng O        &ng P      &tog NAGI
-&none      &ng A      &ng S      &ng D      &ng F      &ng G                    &ng H      &ng J      &ng K        &ng L        &ng SEMI   &none
-&none      &ng Z      &ng X      &ng C      &ng V      &ng B                    &ng N      &ng M      &ng COMMA    &ng DOT      &ng SLASH  &none
-&none      &none      &none      &none      &ng SPACE                &ng ENTER  &none                                                      &none
+&none      &ng A      &ng S      &ng D      &ng F      &ng G                    &ng H      &ng J      &ng K        &ng L        &ng SEMI   &kp LBKT
+&none      &ng Z      &ng X      &ng C      &ng V      &ng B                    &ng N      &ng M      &ng COMMA    &ng DOT      &ng SLASH  &kp DOT
+&none      &none      &none      &none      &ng SPACE                &ng ENTER  &kp BSPC                                                   &none
             >;
         };
     };
