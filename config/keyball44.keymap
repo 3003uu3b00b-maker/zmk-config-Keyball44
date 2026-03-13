@@ -5,6 +5,7 @@
 #define MOUSE   4
 #define SCROLL  5
 #define SNIPE   6
+#define NAGI    7
 
 #include <behaviors/mouse_keys.dtsi>
 #include <dt-bindings/zmk/mouse.h>
@@ -12,6 +13,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
+#include <behaviors/naginata.dtsi>
 
 &lt {
     tapping-term-ms = <240>;
@@ -150,6 +152,16 @@
             bindings = <&mkp>, <&kp>;
         };
 
+        /* レイヤートグル/キー ホールドタップ (長押し=レイヤートグル, タップ=キー) */
+        ht_tog: hold_tap_toggle {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_TOG";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <300>;
+            bindings = <&tog>, <&kp>;
+        };
+
         /* 9/マクロ タップダンス (1回=9, 2回=Dins10236マクロ) */
 
         td_9_dins: tap_dance_9_dins {
@@ -183,7 +195,7 @@
         default_layer {
             label = "QWRT";
             bindings = <
-&kp LALT            &ht F2 Q        &ht F4 L          &ht N7 H            &ht N8 C     &ht N9 F                   &ht LS(MINUS) P  &ht LS(SEMI) B  &ht MINUS U  &ht FSLH MINUS   &kp LS(SQT)  &mkp LCLK
+&kp LALT            &ht F2 Q        &ht F4 L          &ht N7 H            &ht N8 C     &ht N9 F                   &ht LS(MINUS) P  &ht LS(SEMI) B  &ht MINUS U  &ht FSLH MINUS   &kp LS(SQT)  &tog NAGI
 &kp TAB             &kp A            &kp N             &ht_slow N4 R       &ht_slow N5 S  &ht_slow N6 W                &ht_slow LC(C) G   &ht_slow LC(V) T  &ht_slow UP E  &ht_slow DOWN O    &ht_slow LEFT I  &ht_slow RIGHT COMMA
 &kp LCTRL           &kp LEFT_SHIFT  &ht F8 Z          &ht N1 Y            &ht N2 M     &ht N3 V                   &ht LC(Z) J      &ht LC(Y) K     &ht LC(A) D  &ht LA(F4) BSPC  &kp X        &ht LS(FSLH) DOT
 &ht LG(LS(S)) LGUI  &ht N0 LALT     &ht_mkp LCLK ESC  &ht_mkp RCLK LSHFT  &lt 1 SPACE                &lt 2 ENTER  &ht DEL BSPC                                                                &kp GRAVE
@@ -285,6 +297,27 @@
 &trans       &trans  &trans  &trans  &trans  &trans                 &trans     &trans  &trans  &trans  &trans  &trans
 &trans       &trans  &trans  &trans  &trans  &trans                 &trans     &trans  &trans  &trans  &trans  &trans
 &trans       &trans  &trans  &trans  &trans              &mkp RCLK  &mkp LCLK                                  &trans
+            >;
+        };
+
+        /* ===== LAYER 7: NAGINATA (薙刀式) =====
+         * zmk-naginata モジュールが同時打鍵・濁音・拗音等を内部処理する。
+         * &ng にQWERTY配列のキーコードを渡すことで、薙刀式の配列に変換される。
+         *
+         * 単打面:
+         *   ヴ(Q) き(W) て(E) し(R) [T]  |  [Y] る(U) す(I) へ(O) [P]
+         *   ろ(A) け(S) と(D) か(F) っ(G) |  く(H) あ(J) い(K) う(L) ー(;)
+         *   ほ(Z) ひ(X) は(C) こ(V) そ(B) |  た(N) な(M) ん(,) ら(.) れ(/)
+         *
+         * 右上端 = &tog NAGI → Layer 0に戻る
+         */
+        naginata_layer {
+            label = "NAGI";
+            bindings = <
+&none      &ng Q      &ng W      &ng E      &ng R      &ng T                    &ng Y      &ng U      &ng I        &ng O        &ng P      &tog NAGI
+&none      &ng A      &ng S      &ng D      &ng F      &ng G                    &ng H      &ng J      &ng K        &ng L        &ng SEMI   &none
+&none      &ng Z      &ng X      &ng C      &ng V      &ng B                    &ng N      &ng M      &ng COMMA    &ng DOT      &ng SLASH  &none
+&none      &none      &none      &none      &ng SPACE                &ng ENTER  &none                                                      &none
             >;
         };
     };
