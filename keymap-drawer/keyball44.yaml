@@ -12,7 +12,7 @@ layers:
   - {t: U, h: '-'}
   - {t: '-', h: /, s: _}
   - {t: Sft+', s: Sft+"}
-  - {t: NAGI, h: toggle}
+  - $$mdi:mouse-left-click-outline$$
   - $$mdi:keyboard-tab$$
   - A
   - N
@@ -34,7 +34,7 @@ layers:
   - {t: J, h: Ctl+Z}
   - {t: K, h: Ctl+Y}
   - {t: D, h: Ctl+A}
-  - {t: '$$mdi:backspace$$', h: Alt+F4}
+  - {t: '$$mdi:backspace$$', h: NAGI}
   - X
   - {t: ., h: Sft+/, s: '>'}
   - {t: LGUI, h: Gui+Sft+S}
@@ -339,7 +339,7 @@ layers:
   - '&ng K'
   - '&ng L'
   - '&ng SEMI'
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '[', s: '{'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - '&ng Z'
   - '&ng X'
@@ -351,14 +351,14 @@ layers:
   - '&ng COMMA'
   - '&ng DOT'
   - '&ng SLASH'
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: ., s: '>'}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - '&ng SPACE'
   - '&ng ENTER'
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:backspace$$', type: backspace}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
 combos:
 - p: [10, 11]
