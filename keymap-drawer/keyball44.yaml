@@ -12,7 +12,7 @@ layers:
   - {t: U, h: '-'}
   - {t: '-', h: /, s: _}
   - {t: Sft+', s: Sft+"}
-  - $$mdi:mouse-left-click-outline$$
+  - {t: NAGI, h: toggle}
   - $$mdi:keyboard-tab$$
   - A
   - N
@@ -315,6 +315,51 @@ layers:
   - $$mdi:mouse-right-click-outline$$
   - $$mdi:mouse-left-click-outline$$
   - {t: '$$mdi:transfer$$', type: trans}
+  NAGI:
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - '&ng Q'
+  - '&ng W'
+  - '&ng E'
+  - '&ng R'
+  - '&ng T'
+  - '&ng Y'
+  - '&ng U'
+  - '&ng I'
+  - '&ng O'
+  - '&ng P'
+  - {t: NAGI, h: toggle}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - '&ng A'
+  - '&ng S'
+  - '&ng D'
+  - '&ng F'
+  - '&ng G'
+  - '&ng H'
+  - '&ng J'
+  - '&ng K'
+  - '&ng L'
+  - '&ng SEMI'
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - '&ng Z'
+  - '&ng X'
+  - '&ng C'
+  - '&ng V'
+  - '&ng B'
+  - '&ng N'
+  - '&ng M'
+  - '&ng COMMA'
+  - '&ng DOT'
+  - '&ng SLASH'
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - '&ng SPACE'
+  - '&ng ENTER'
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: '$$mdi:minus-circle-outline$$', type: none}
 combos:
 - p: [10, 11]
   k: $$mdi:progress-download$$
