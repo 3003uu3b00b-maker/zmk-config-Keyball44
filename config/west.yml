@@ -5,7 +5,7 @@ manifest:
     - name: kumamuk-git
       url-base: https://github.com/kumamuk-git
     - name: eswai
-      url-base: https://github.com/eswai
+      url-base: https://github.com/3003uu3b00b-maker
   projects:
     - name: zmk
       remote: zmkfirmware
