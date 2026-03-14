@@ -316,7 +316,7 @@ layers:
   - $$mdi:mouse-left-click-outline$$
   - {t: '$$mdi:transfer$$', type: trans}
   NAGI:
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - C
   - '&ng Q'
   - '&ng W'
   - '&ng E'
@@ -327,8 +327,8 @@ layers:
   - '&ng I'
   - '&ng O'
   - '&ng P'
-  - {t: NAGI, h: toggle}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - $$mdi:mouse-left-click-outline$$
+  - V
   - '&ng A'
   - '&ng S'
   - '&ng D'
@@ -352,14 +352,14 @@ layers:
   - '&ng DOT'
   - '&ng SLASH'
   - {t: ., s: '>'}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - $$mdi:apple-keyboard-control$$
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - '&ng SPACE'
-  - '&ng ENTER'
+  - {t: NAGI, h: toggle}
   - {t: '$$mdi:backspace$$', type: backspace}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - '&ng ENTER'
+  - {t: '`', s: '~'}
 combos:
 - p: [10, 11]
   k: $$mdi:progress-download$$
