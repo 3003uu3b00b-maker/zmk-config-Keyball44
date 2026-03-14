@@ -358,7 +358,7 @@ layers:
   - '&ng SPACE'
   - {t: NAGI, h: toggle}
   - {t: '$$mdi:keyboard-return$$', type: enter}
-  - $$mdi:apple-keyboard-shift$$
+  - '&ng SPACE'
   - {t: '`', s: '~'}
 combos:
 - p: [10, 11]
