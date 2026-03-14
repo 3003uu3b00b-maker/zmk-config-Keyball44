@@ -302,22 +302,23 @@
 
         /* ===== LAYER 7: NAGINATA (薙刀式) =====
          * zmk-naginata モジュールが同時打鍵・濁音・拗音等を内部処理する。
-         * &ng にQWERTY配列のキーコードを渡すことで、薙刀式の配列に変換される。
          *
          * 単打面:
          *   ヴ(Q) き(W) て(E) し(R) [T]  |  [Y] る(U) す(I) へ(O) [P]
          *   ろ(A) け(S) と(D) か(F) っ(G) |  く(H) あ(J) い(K) う(L) ー(;)
          *   ほ(Z) ひ(X) は(C) こ(V) そ(B) |  た(N) な(M) ん(,) ら(.) れ(/)
          *
-         * 右上端 = &tog NAGI → Layer 0に戻る
+         * Row0左端=C, Row1左端=V (CTRL+C/Vコピペ用)
+         * Row3左端=CTRL, SPACEを左にずらしtog NAGIを配置
+         * Row3右側: BSPC/ENTER入替, 右端=日本語切替
          */
         naginata_layer {
             label = "NAGI";
             bindings = <
-&none      &ng Q      &ng W      &ng E      &ng R      &ng T                    &ng Y      &ng U      &ng I        &ng O        &ng P      &tog NAGI
-&none      &ng A      &ng S      &ng D      &ng F      &ng G                    &ng H      &ng J      &ng K        &ng L        &ng SEMI   &kp LBKT
+&kp C      &ng Q      &ng W      &ng E      &ng R      &ng T                    &ng Y      &ng U      &ng I        &ng O        &ng P      &mkp LCLK
+&kp V      &ng A      &ng S      &ng D      &ng F      &ng G                    &ng H      &ng J      &ng K        &ng L        &ng SEMI   &kp LBKT
 &none      &ng Z      &ng X      &ng C      &ng V      &ng B                    &ng N      &ng M      &ng COMMA    &ng DOT      &ng SLASH  &kp DOT
-&none      &none      &none      &none      &ng SPACE                &ng ENTER  &kp BSPC                                                   &none
+&kp LCTRL  &none      &none      &ng SPACE  &tog NAGI                &kp BSPC   &ng ENTER                                                  &kp GRAVE
             >;
         };
     };
