@@ -354,7 +354,7 @@ layers:
   - {t: ., s: '>'}
   - $$mdi:apple-keyboard-control$$
   - {t: '$$mdi:minus-circle-outline$$', type: none}
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - '&ng F'
   - '&ng SPACE'
   - {t: NAGI, h: toggle}
   - {t: '$$mdi:backspace$$', type: backspace}
